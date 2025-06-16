@@ -1,0 +1,32 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+      auto-index-creation: true
+      database: EventTrackerDb
+  application:
+    name: EventTrackerApp
+server:
+  address: 0.0.0.0
+  port: 8080
+
+logging:
+  level:
+    com.example.yuvraj.EventTracker: INFO
+    com.example.yuvraj.EventTracker.filters.RequestLoggingFilter: INFO
+    com.example.yuvraj.EventTracker.Exception.GlobalExceptionHandler: ERROR
+    org:
+      springframework:
+        security: DEBUG
+        web: DEBUG
+    root: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/eventtracker-app.log
+  logback:
+    rollingpolicy:
+      max-file-size: 50MB
+      max-history: 30
+      total-size-cap: 1GB
