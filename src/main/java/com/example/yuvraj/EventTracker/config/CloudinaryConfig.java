@@ -13,10 +13,8 @@ public class CloudinaryConfig {
     public Cloudinary getCloudinary() {
         System.out.println("Looking for .env in: " + System.getProperty("user.dir"));
 //        dotenv = Dotenv.load();
-
-        Dotenv dotenv = Dotenv.load();
-        System.out.println("CLOUDINARY_URL = " + dotenv.get("CLOUDINARY_URL"));
-        Cloudinary cloudinary = new Cloudinary(dotenv.get("CLOUDINARY_URL"));
+        System.out.println("CLOUDINARY_URL = " + System.getenv("CLOUDINARY_URL"));
+        Cloudinary cloudinary = new Cloudinary(System.getenv("CLOUDINARY_URL"));
         System.out.println(cloudinary.config.cloudName);
         return cloudinary;
     }
